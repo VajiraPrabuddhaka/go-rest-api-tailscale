@@ -104,7 +104,7 @@ func (r *bookRepository) GetById(ctx context.Context, id string) (models.Book, e
 	defer r.lock.RUnlock()
 	// Calling the service running on the machine which is connected to your tailscale network
 	// Need to add the ip provided for that machine by tailscale
-	resp, err := http.Get("http://100.71.111.110:8090/?name=" + id)
+	resp, err := http.Get("http://100.95.126.2:8090/?name=" + id)
 	if err != nil {
 		log.Fatalln(err)
 	} else {
