@@ -14,7 +14,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM golang:1.19.0-alpine as build-env
+FROM golang:1.21.3-alpine as build-env
 
 RUN mkdir /app
 WORKDIR /app
@@ -35,7 +35,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /go/
 FROM alpine:latest as tailscale
 RUN mkdir /app
 WORKDIR /app
-ENV TSFILE=tailscale_1.40.1_amd64.tgz
+ENV TSFILE=tailscale_1.64.0_amd64.tgz
 RUN wget https://pkgs.tailscale.com/stable/${TSFILE} && \
   tar xzf ${TSFILE} --strip-components=1
 
